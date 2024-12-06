@@ -1,0 +1,77 @@
+<div class="table-container" *ngIf="config?.actions">
+  <div *ngIf="config.pageTitle" class="table-header">
+    <h2>{{ config.pageTitle }}</h2>
+    <div class="table-actions">
+      <button *ngIf="config.refreshable" (click)="refresh.emit()">Refresh</button>
+      <button *ngIf="config.exportable" (click)="exportData.emit()">Export</button>
+      <button *ngIf="config.addable" (click)="addItem.emit()">Add Item</button>
+    </div>
+  </div>
+  <div *ngIf="config.filterable" class="search-bar">
+    <input
+      type="text"
+      placeholder="Search keyword..."
+      (keyup)="onSearch($event)"
+    />
+  </div>
+  <table>
+    <thead>
+    <tr>
+      <th *ngFor="let column of config.columns" [ngClass]="column.class">
+        {{ column.header }}
+        <span *ngIf="column.sortable" class="sortable-indicator">⇅</span>
+      </th>
+      <th class="actions-column" *ngIf="(config?.actions?.length || 0) > 0"></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of items">
+      <td *ngFor="let column of config.columns" [ngClass]="getConditionalClass(item, column)">
+        <ng-container [ngSwitch]="column.type">
+          <ng-container *ngSwitchCase="'image'">
+            <img [src]="getValue(item, column.name)" [class]="config.imageClass" alt="Image"/>
+          </ng-container>
+          <ng-container *ngSwitchCase="'boolean'">
+            <i class="material-icons">{{ getValue(item, column.name) ? 'check_circle' : 'cancel' }}</i>
+          </ng-container>
+          <ng-container *ngSwitchCase="'link'">
+            <a [href]="getValue(item, column.name)" target="_blank">{{ getValue(item, column.name) }}</a>
+          </ng-container>
+          <ng-container *ngSwitchDefault>
+            {{ getValue(item, column.name) }}
+          </ng-container>
+        </ng-container>
+      </td>
+      <td class="actions-column" *ngIf="(config?.actions?.length || 0) > 0">
+        <div class="action-menu">
+          <button class="three-dots" (click)="toggleMenu(item)">
+            <i class="material-icons">more_vert</i>
+          </button>
+          <div *ngIf="isMenuOpen(item)" class="dropdown">
+            <button
+              *ngFor="let action of config.actions"
+              [ngClass]="action.class"
+              (click)="handleAction(action, item); closeMenu(item)"
+            >
+              <i class="material-icons">{{ action.icon }}</i> {{ action.name }}
+            </button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="numbers">
+    <mat-paginator
+      #paginator
+      [length]="config.totalCount"
+      [pageIndex]="0"
+      [showFirstLastButtons]="true"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      (page)="paginatorPageChanged($event)"
+    >
+    </mat-paginator>
+  </div>
+</div>

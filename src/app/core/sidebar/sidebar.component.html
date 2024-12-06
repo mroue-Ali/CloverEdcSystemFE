@@ -1,0 +1,22 @@
+<div class="sidebar" [class.collapsed]="isCollapsed">
+  <div class="toggle-btn" (click)="toggleSidebar()">
+    <i class="material-icons">menu</i>
+  </div>
+  <ul>
+<!--    <li *ngFor="let item of items">-->
+<!--      <a [routerLink]="item.route" matTooltip="{{ isCollapsed ? item.title : '' }}" matTooltipPosition="right">-->
+<!--        <i class="material-icons">{{ item.icon }}</i>-->
+<!--        <span *ngIf="!isCollapsed">{{ item.title }}</span>-->
+<!--      </a>-->
+<!--    </li>-->
+    <li class="hello-user">
+      <span *ngIf="!isCollapsed"> Hello {{user?.userName}}</span>
+    </li>
+    <li *ngFor="let item of items">
+      <a (click)="handleItemClick(item)" matTooltip="{{ isCollapsed ? item.title : '' }}" matTooltipPosition="right">
+        <i class="material-icons">{{ item.icon }}</i>
+        <span *ngIf="!isCollapsed">{{ item.title }}</span>
+      </a>
+    </li>
+  </ul>
+</div>

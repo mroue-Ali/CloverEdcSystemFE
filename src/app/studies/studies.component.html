@@ -1,0 +1,11 @@
+<div class="content">
+  <app-custom-table
+    [config]="config"
+    [items]="studies"
+    (addItem)="onAdd()"
+    (refresh)="onRefresh($event)"
+    (exportData)="onExport()"
+    (search)="onSearch($event)"
+  >
+  </app-custom-table>
+</div>

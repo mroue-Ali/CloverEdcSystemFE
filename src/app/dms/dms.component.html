@@ -1,0 +1,10 @@
+<div class="content">
+  <app-custom-table
+    [config]="config"
+    [items]="dms"
+    (addItem)="onAdd()"
+    (refresh)="onRefresh($event)"
+    (search)="onSearch($event)"
+  >
+  </app-custom-table>
+</div>

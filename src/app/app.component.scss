@@ -1,0 +1,15 @@
+.wrapper{
+  display: flex;
+}
+
+
+.page-container{
+  width: 100%;
+  min-height: calc(100vh - 76px);
+  height: 100px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding-bottom: 80px;
+  transition: .5s;
+
+}
