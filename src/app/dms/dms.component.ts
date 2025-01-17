@@ -59,11 +59,11 @@ export class DmsComponent {
   }
 
   onEdit(row: any) {
-    const dialogRef = this.dialog.open(PiDialogComponent, {
+    const dialogRef = this.dialog.open(UserDialogComponent, {
       width: '400px',
       data: {
         item: row,
-        action: 'edit',
+        action: 'editDM',
       },
     });
 
@@ -80,7 +80,7 @@ export class DmsComponent {
     const dialogRef = this.dialog.open(UserDialogComponent, {
       width: '400px',
       data: {
-        action: 'addAdmin'
+        action: 'addAdminDM'
       }, // Pass data if needed
     });
 

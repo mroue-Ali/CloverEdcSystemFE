@@ -16,9 +16,9 @@ export class RoleService {
   constructor(private http: HttpClient, private router: Router) {
   }
 
-  getAll(size: number, pageIndex: number): Observable<any> {
+  getAll(size: number, pageIndex: number,keyword : string): Observable<any> {
     return this.http.get(
-      `${this.apiUrl}${this.baseRoute}?size=${size}&offset=${pageIndex}`
+      `${this.apiUrl}${this.baseRoute}?size=${size}&offset=${pageIndex}&keyword=${keyword}`
     );
   }
 

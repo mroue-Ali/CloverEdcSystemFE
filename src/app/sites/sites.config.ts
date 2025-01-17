@@ -1,12 +1,13 @@
-import { TableConfig } from '../../models/tableConfig.model';
-import { Action } from '../../models/action.model';
+import {TableConfig} from '../../models/tableConfig.model';
+import {Action} from '../../models/action.model';
 
 export const SitesConfig: TableConfig = {
   pageTitle: 'Sites',
   columns: [
-    { name: 'name', header: 'Name', sortable: true },
-    { name: 'location', header: 'Location', sortable: true },
-    { name: 'study.name', header: 'Study', type: 'text' },
+    {name: 'name', header: 'Name', sortable: true},
+    {name: 'location', header: 'Location', sortable: true},
+    {name: 'hasPi', header: 'Has PI', type: 'boolean'},
+    {name: 'study.name', header: 'Study', type: 'text'},
   ],
   actions: [
     // {
@@ -25,7 +26,7 @@ export const SitesConfig: TableConfig = {
     // }
   ],
   addable: true,
-  filterable : false,
+  filterable: true,
   refreshable: true,
   exportable: false,
   pagination: true,

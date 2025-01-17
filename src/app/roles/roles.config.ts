@@ -10,5 +10,6 @@ export const RolesConfig: TableConfig = {
   addable: true,
   refreshable: true,
   exportable: false,
+  filterable:true,
   pagination: true,
 };

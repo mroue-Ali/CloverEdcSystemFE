@@ -10,14 +10,29 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class UserDialogComponent {
   userForm: FormGroup;
   hideRole: boolean;
-
+  label = 'Add User';
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<UserDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
 
-    this.hideRole = data.action === 'addAdmin' || data.action === 'addPi';
+    this.hideRole = data.action === 'addAdmin' || data.action === 'addPi' || data.action === 'addAdminDM';
+    if (data.action === 'edit') {
+      this.label = 'Edit User';
+    }
+    else if (data.action === 'addAdmin') {
+      this.label = 'Add Admin';
+    }
+    else if (data.action === 'addAdminDM') {
+      this.label = 'Add DM';
+    }
+    else if (data.action === 'addPi') {
+      this.label = 'Add PI';
+    }
+    else if (data.action === 'editDM') {
+      this.label = 'Edit DM';
+    }
 
     this.userForm = this.fb.group({
       //fill the data with data.item?

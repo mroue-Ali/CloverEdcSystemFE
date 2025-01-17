@@ -3,6 +3,7 @@
     [config]="config"
     [items]="roles"
     (addItem)="onAdd()"
+  (search)="onSearch($event)"
     (refresh)="onRefresh($event)"
     (exportData)="onExport()"
   >

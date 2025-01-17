@@ -45,7 +45,7 @@ export class UsersComponent {
 
   }
   getRoles(){
-    this.rolesService.getAll(10000,0).subscribe((res: any) => {
+    this.rolesService.getAll(10000,0,"").subscribe((res: any) => {
       this.roles = res.data;
     });
   }

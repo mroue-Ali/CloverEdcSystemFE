@@ -1,13 +1,13 @@
-<h1 mat-dialog-title>Add PI</h1>
+<h1 mat-dialog-title>{{ label }} Role</h1>
 <div mat-dialog-content>
   <form [formGroup]="form">
     <mat-form-field appearance="fill" class="full-width">
-      <mat-label>First Name</mat-label>
+      <mat-label>Role Name</mat-label>
       <input matInput formControlName="name"/>
     </mat-form-field>
   </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">Add</button>
+  <button mat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">Submit</button>
 </div>

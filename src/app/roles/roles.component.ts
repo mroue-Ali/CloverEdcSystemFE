@@ -14,6 +14,7 @@ import {RoleDialogComponent} from './role-dialog/role-dialog.component';
 })
 export class RolesComponent {
   config = RolesConfig;
+  keyword = "";
   roles: RoleModel[] = [];
   size = 10;
   pageIndex = 0;
@@ -22,34 +23,36 @@ export class RolesComponent {
       icon: 'edit',
       name: 'Edit',
       class: 'col-blue',
-      action: (row : any) => this.onEdit(row), // Placeholder action
-      condition: (row : any) => true
+      action: (row: any) => this.onEdit(row), // Placeholder action
+      condition: (row: any) => true
     },
     {
       icon: 'delete',
       name: 'Delete',
       class: 'col-red',
-      action: (row : any) => console.log('Delete item:', row), // Placeholder action
-      condition: (row : any) => row.role.name !== 'Admin'
+      action: (row: any) => console.log('Delete item:', row), // Placeholder action
+      condition: (row: any) => row.role.name !== 'Admin'
     }
   ];
+
   //constructor with roles service
-  constructor(private dialog: MatDialog,private service: RoleService) {
+  constructor(private dialog: MatDialog, private service: RoleService) {
   }
 
   ngOnInit() {
     this.LoadData();
-    this.config.actions = this.actions ;
+    this.config.actions = this.actions;
   }
 
   LoadData() {
-    this.service.getAll(this.size, this.pageIndex).subscribe((res: any) => {
+    this.service.getAll(this.size, this.pageIndex, this.keyword).subscribe((res: any) => {
       this.roles = res.data;
       this.config.totalCount = res.count;
 
     });
 
   }
+
   onAdd() {
 
     const dialogRef = this.dialog.open(RoleDialogComponent, {
@@ -69,19 +72,20 @@ export class RolesComponent {
       }
     });
   }
-  onEdit(row : any) {
+
+  onEdit(row: any) {
 
     const dialogRef = this.dialog.open(RoleDialogComponent, {
       width: '400px',
       data: {
-        item : row,
+        item: row,
         action: 'edit',
       },
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        this.service.edit(result,row.id).subscribe(() => {
+        this.service.edit(result, row.id).subscribe(() => {
           this.LoadData();
         });
 
@@ -91,16 +95,24 @@ export class RolesComponent {
   }
 
   onRefresh(event: { pageIndex: number; pageSize: number }) {
-    console.log('Refresh Data');
+    console.log("event : ", event);
+    if (event) {
+      this.pageIndex = event.pageIndex;
+      this.size = event.pageSize;
+    }
+    this.LoadData();
   }
 
   onExport() {
     console.log('Export Data');
   }
-
+  onSearch(event: string) {
+    this.keyword = event;
+    this.LoadData();
+  }
 
   //delete role
-  onDelete(row : any) {
+  onDelete(row: any) {
     console.log('Delete Data');
 
   }

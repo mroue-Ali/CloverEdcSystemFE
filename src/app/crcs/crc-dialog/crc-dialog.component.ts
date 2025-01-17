@@ -9,23 +9,28 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class CrcDialogComponent {
   form: FormGroup;
-
+  label = 'Add CRC';
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<CrcDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    var siteIds = data.action=="editPi"?  data.item?.piSites?.map((site: any) => site.siteId): data.item?.crcSites?.map((site: any) => site.siteId);
-    console.log("asdasdasdasd", siteIds);
+    var siteIds = data.action=="editPi"?  data.item?.sites?.map((site: any) => site.id): data.item?.crcSites?.map((site: any) => site.siteId) || [];
+
     this.form = this.fb.group({
       firstName: [data.item?.user.firstName, [Validators.required]],
       lastName: [data.item?.user.lastName, [Validators.required]],
       userName: [data.item?.user.userName, [Validators.required]],
       email: [data.item?.user.email, [Validators.required]],
-      siteIds: [siteIds?.length > 0 ? siteIds : [], [Validators.required]],
+      // siteIds: [siteIds?.length > 0 ? siteIds : [], [Validators.required]],
       password: ['', data.action == "edit" || data.action =="editPi" ? [] : [Validators.required]],
     });
 
+    if (data.action === 'edit') {
+      this.label = 'Edit CRC';
+    } else if (data.action === 'editPi') {
+      this.label = 'Edit PI';
+    }
     // if (data.action === 'edit') {
     //   this.userForm.addControl('status', this.fb.control(data.item?.status));
     // }

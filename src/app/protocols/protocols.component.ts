@@ -17,6 +17,7 @@ import {ProtocolDialogComponent} from './protocol-dialog/protocol-dialog.compone
 })
 export class ProtocolsComponent {
   config = ProtocolsConfig;
+  titttt="TEST";
   protocols: ProtocolModel[] = [];
   size = 10;
   pageIndex = 0;
@@ -103,6 +104,7 @@ export class ProtocolsComponent {
       this.pageIndex = event.pageIndex;
       this.size = event.pageSize;
     }
+
     this.LoadData();
   }
 

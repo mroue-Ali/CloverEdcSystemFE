@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ProtocolDialogComponent {
   protocolForm: FormGroup;
   data: any;
+  label = 'Add';
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<ProtocolDialogComponent>,
@@ -20,6 +21,9 @@ export class ProtocolDialogComponent {
       numOfVisits: [Idata.item?.numOfVisits || '', [Validators.required]],
       randomization: [Idata.item?.randomization?.toString() || 'false', [Validators.required]],
     });
+    if (Idata.item) {
+      this.label = 'Edit';
+    }
     this.data = Idata;
   }
 

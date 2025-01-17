@@ -26,7 +26,7 @@ export const StudiesConfig: TableConfig = {
     // }
   ],
   addable: true,
-  filterable : false,
+  filterable : true,
   refreshable: true,
   exportable: false,
   pagination: true,

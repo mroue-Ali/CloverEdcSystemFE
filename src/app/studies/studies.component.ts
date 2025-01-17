@@ -9,6 +9,7 @@ import {StudiesConfig} from './studies.config';
 import {ProtocolModel} from '../../models/Protocol.model';
 import {StudyModel} from '../../models/study.model';
 import {StudyDialogComponent} from './studie-dialog/study-dialog.component';
+import {ProtocolsService} from '../protocols/protocols.service';
 
 @Component({
   selector: 'app-studies',
@@ -46,7 +47,7 @@ export class StudiesComponent {
     }
   ];
   //constructor with roles service
-  constructor(private dialog: MatDialog,private studiesService: StudiesService) {
+  constructor(private dialog: MatDialog,private studiesService: StudiesService,private protocolService: ProtocolsService) {
   }
 
   ngOnInit() {
@@ -56,7 +57,7 @@ export class StudiesComponent {
 
   }
   getProtocols(){
-    this.studiesService.getProtocols().subscribe((res: any) => {
+    this.protocolService.getAll(1000,0,"").subscribe((res: any) => {
       this.protocols = res.data;
     });
   }
@@ -108,6 +109,7 @@ export class StudiesComponent {
     });
   }
   onAdd() {
+    console.log("protocols : ",this.protocols)
     const dialogRef = this.dialog.open(StudyDialogComponent, {
       width: '400px',
       data: {
@@ -128,6 +130,7 @@ export class StudiesComponent {
   }
 
   onSearch(event: string) {
+    // this.pageIndex=0;
     this.keyword = event;
     this.LoadData();
   }

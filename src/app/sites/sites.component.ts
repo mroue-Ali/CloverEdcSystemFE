@@ -34,10 +34,10 @@ export class SitesComponent {
     },
     {
       icon: 'add',
-      name: 'Add Admin',
+      name: 'Add Pi',
       class: 'col-green',
       action: (row : any) => this.onAddNewPi(row), // Placeholder action
-      condition: (row : any) => true
+      condition: (row : any) => row.hasPi === false
     },
     {
       icon: 'delete',

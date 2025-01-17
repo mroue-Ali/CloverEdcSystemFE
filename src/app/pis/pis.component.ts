@@ -43,7 +43,7 @@ export class PisComponent {
   ];
 
   //constructor with roles service
-  constructor(private dialog: MatDialog, private service: PisService) {
+  constructor(private dialog: MatDialog, private service: PisService,private sitesService: SitesService) {
   }
 
   ngOnInit() {
@@ -56,7 +56,7 @@ export class PisComponent {
     // }
   }
   getSites() {
-    this.service.getAllSites(this.user.studyId).subscribe((res: any) => {
+    this.sitesService.getAllByStudyId(this.user.studyId,1000,0,"").subscribe((res: any) => {
       this.sites = res.data;
     });
   }

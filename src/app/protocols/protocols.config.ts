@@ -25,7 +25,7 @@ export const ProtocolsConfig: TableConfig = {
     // }
   ],
   addable: true,
-  filterable : false,
+  filterable : true,
   refreshable: true,
   exportable: false,
   pagination: true,

@@ -10,7 +10,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class SiteDialogComponent {
   form: FormGroup;
   statuses = ['Pending', 'Opened', 'Closed'];
-
+  label = 'Add Site';
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<SiteDialogComponent>,
@@ -22,6 +22,10 @@ export class SiteDialogComponent {
       location: [data.item?.location, [Validators.required]],
     });
 
+    if (data.action === 'edit') {
+      this.label = 'Edit Site';
+      this.form.addControl('status', this.fb.control(data.item?.status));
+    }
     // if (data.action === 'edit') {
     //   this.userForm.addControl('status', this.fb.control(data.item?.status));
     // }

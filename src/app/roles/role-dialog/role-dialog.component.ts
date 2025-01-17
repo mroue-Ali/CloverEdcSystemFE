@@ -9,7 +9,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class RoleDialogComponent {
   form: FormGroup;
-
+label = 'Add'
   constructor(
     private fb: FormBuilder,
     private dialogRef: MatDialogRef<RoleDialogComponent>,
@@ -19,6 +19,9 @@ export class RoleDialogComponent {
     this.form = this.fb.group({
       name: [data.item?.name, [Validators.required]],
     });
+    if (data.action == "edit") {
+      this.label = 'Edit'
+    }
 
   }
 

@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Add CRC</h1>
+<h1 mat-dialog-title>{{ label }}</h1>
 <div mat-dialog-content>
   <form [formGroup]="form">
     <mat-form-field appearance="fill" class="full-width">
@@ -23,15 +23,15 @@
       <input matInput formControlName="password"/>
     </mat-form-field>
 
-    <mat-form-field appearance="fill" class="full-width">
-      <mat-label>Sites</mat-label>
-      <mat-select formControlName="siteIds" multiple>
-        <mat-option *ngFor="let site of data.sites" [value]="site.id">{{ site.name }}</mat-option>
-      </mat-select>
-    </mat-form-field>
+<!--    <mat-form-field appearance="fill" class="full-width">-->
+<!--      <mat-label>Sites</mat-label>-->
+<!--      <mat-select formControlName="siteIds" multiple>-->
+<!--        <mat-option *ngFor="let site of data.sites" [value]="site.id">{{ site.name }}</mat-option>-->
+<!--      </mat-select>-->
+<!--    </mat-form-field>-->
   </form>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onCancel()">Cancel</button>
-  <button mat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">Add</button>
+  <button mat-button color="primary" [disabled]="!form.valid" (click)="onSubmit()">Submit</button>
 </div>

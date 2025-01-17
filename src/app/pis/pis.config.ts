@@ -7,6 +7,7 @@ export const PisConfig: TableConfig = {
     // { name: 'user.firstName +++ user.lastName', header: 'Name', sortable: true },
     { name: 'user.userName', header: 'UserName', sortable: true },
     { name: 'user.email', header: 'Email', type: 'text' },
+    { name: 'sitesStr', header: 'Sites', type: 'text' },
   ],
   actions: [
     // {
@@ -24,8 +25,8 @@ export const PisConfig: TableConfig = {
     //   condition: (row) => row.role.name !== 'Admin'
     // }
   ],
-  addable: true,
-  filterable : false,
+  addable: false,
+  filterable : true,
   refreshable: true,
   exportable: false,
   pagination: true,
