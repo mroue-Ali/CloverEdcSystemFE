@@ -1,0 +1,15 @@
+mat-dialog-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+mat-dialog-actions {
+  margin-top: 20px;
+}

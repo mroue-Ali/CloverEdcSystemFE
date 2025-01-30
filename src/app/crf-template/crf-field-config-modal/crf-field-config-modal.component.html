@@ -1,0 +1,90 @@
+<h2 mat-dialog-title>Configure Field</h2>
+
+<mat-dialog-content>
+  <!-- Required Field Toggle -->
+  <mat-slide-toggle [(ngModel)]="data.isRequired">Is Required</mat-slide-toggle>
+
+  <div class="form-group">
+    <label for="fieldName">Field Name</label>
+    <input matInput id="fieldName" [(ngModel)]="data.fieldName" placeholder="Enter the field name"/>
+  </div>
+
+  <!-- Related Field Dropdown -->
+  <div class="form-group">
+    <label for="relatedField">Related Field</label>
+    <mat-select
+      id="relatedField"
+      [(ngModel)]="selectedRelatedField"
+      placeholder="Select a related field"
+      (selectionChange)="onRelatedFieldChange($event.value)"
+    >
+      <mat-option *ngFor="let field of availableFields" [value]="field">
+        {{ field.fieldName }} ({{ field.typeName }})
+      </mat-option>
+    </mat-select>
+<!--    <mat-select id="relatedField" [(ngModel)]="data.relatedField" placeholder="Select a related field"-->
+<!--                (selectionChange)="onRelatedFieldChange($event.value)">-->
+<!--      <mat-option *ngFor="let field of availableFields" [value]="field">-->
+<!--        {{ field.fieldName }} ({{ field.typeName }})-->
+<!--      </mat-option>-->
+<!--    </mat-select>-->
+  </div>
+
+  <!-- Related Value Input -->
+  <div class="form-group">
+    <label for="relatedValue">Related Value</label>
+    <!-- Show dropdown if the selected related field type is dropdown -->
+    <mat-select *ngIf="isDropdown" id="relatedValue1" [(ngModel)]="data.relatedValue" placeholder="Select a value">
+      <mat-option *ngFor="let option of relatedFieldOptions" [value]="option.value">
+        {{ option.value }}
+      </mat-option>
+    </mat-select>
+
+    <!-- Show input with a type matching the related field type if it's not dropdown -->
+    <input
+      *ngIf="!isDropdown"
+      matInput
+      id="relatedValue"
+      [type]="getRelatedFieldInputType(selectedRelatedField?.typeName)"
+      [(ngModel)]="data.relatedValue"
+      placeholder="Enter the related value"
+    />
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button color="primary" (click)="save()">Save</button>
+</mat-dialog-actions>
+
+<!--<h2 mat-dialog-title>Configure Field</h2>-->
+
+<!--<mat-dialog-content>-->
+<!--  &lt;!&ndash; Required Field Toggle &ndash;&gt;-->
+<!--  <mat-slide-toggle [(ngModel)]="data.isRequired">Is Required</mat-slide-toggle>-->
+
+<!--  <div class="form-group">-->
+<!--    <label for="fieldName">Field Name</label>-->
+<!--    <input matInput id="fieldName" [(ngModel)]="data.fieldName" placeholder="Enter the field name" />-->
+<!--  </div>-->
+<!--  &lt;!&ndash; Related Field Dropdown &ndash;&gt;-->
+<!--  <div class="form-group">-->
+<!--    <label for="relatedField">Related Field</label>-->
+<!--    <mat-select id="relatedField" [(ngModel)]="data.relatedField" placeholder="Select a related field">-->
+<!--      <mat-option *ngFor="let field of availableFields" [value]="field.id">-->
+<!--        {{ field.fieldName }}-->
+<!--      </mat-option>-->
+<!--    </mat-select>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; Related Value Input &ndash;&gt;-->
+<!--  <div class="form-group">-->
+<!--    <label for="relatedValue">Related Value</label>-->
+<!--    <input matInput id="relatedValue" [(ngModel)]="data.relatedValue" placeholder="Enter the related value" />-->
+<!--  </div>-->
+<!--</mat-dialog-content>-->
+
+<!--<mat-dialog-actions align="end">-->
+<!--  <button mat-button mat-dialog-close>Cancel</button>-->
+<!--  <button mat-button color="primary" (click)="save()">Save</button>-->
+<!--</mat-dialog-actions>-->
