@@ -1,0 +1,55 @@
+  <!-- Main Content -->
+<!--  <div class="fields-list">-->
+<!--    <h2>Fields in File</h2>-->
+<!--    <button mat-button color="primary" (click)="addNewField()">Add New BaseField</button>-->
+<!--    <table mat-table [dataSource]="crfFields" class="mat-elevation-z8">-->
+<!--      <ng-container matColumnDef="fieldName">-->
+<!--        <th mat-header-cell *matHeaderCellDef> Field Name </th>-->
+<!--        <td mat-cell *matCellDef="let field"> {{ field.fieldName }} </td>-->
+<!--      </ng-container>-->
+<!--      <ng-container matColumnDef="type">-->
+<!--        <th mat-header-cell *matHeaderCellDef> Type </th>-->
+<!--        <td mat-cell *matCellDef="let field"> {{ field.typeName }} </td>-->
+<!--      </ng-container>-->
+<!--      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>-->
+<!--      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>-->
+<!--    </table>-->
+<!--  </div>-->
+  <div *ngIf="isNextQuestionMode" class="overlay"></div>
+
+  <div class="add-field-container">
+    <!-- Fields List -->
+    <div class="fields-list">
+      <h2>Fields in File</h2>
+      <table>
+        <thead>
+        <tr>
+          <th>Field Name</th>
+          <th>Type</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let field of crfFields">
+          <td>{{ field.fieldName }}</td>
+          <td>{{ field.typeName }}</td>
+          <td>
+            <!-- Button to trigger "Next Field" process -->
+            <button mat-button color="primary" (click)="nextField(field)"  [disabled]="isNextQuestionMode">Next Question</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  <!-- Sidebar -->
+  <app-fields-sidebar
+    [baseFields]="baseFields"
+    [fileId]="fileId"
+    [crfFields]="crfFields"
+    [templateId]="templateId"
+    (baseFieldAdded)="addBaseField($event)"
+    (configureCrfField)="configureCrfField($event)"
+    [isNextQuestionMode]="isNextQuestionMode"
+    (baseFieldClicked)="onBaseFieldClick($event)">
+  </app-fields-sidebar>
+</div>

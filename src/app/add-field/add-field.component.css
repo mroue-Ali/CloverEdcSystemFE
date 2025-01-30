@@ -1,0 +1,41 @@
+.add-field-container {
+  display: flex;
+  width: 100%;
+}
+
+.fields-list {
+  flex: 3;
+  padding: 20px;
+}
+
+.fields-table {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.fields-header {
+  display: flex;
+  font-weight: bold;
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+}
+
+.fields-row {
+  display: flex;
+  border-bottom: 1px solid #eee;
+  padding: 10px 0;
+}
+
+.field-column {
+  flex: 1;
+  padding: 0 10px;
+}
+
+
+app-fields-sidebar {
+  flex: 1;
+  background: #f4f4f4;
+  padding: 20px;
+  border-left: 1px solid #ccc;
+}

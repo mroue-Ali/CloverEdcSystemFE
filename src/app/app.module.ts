@@ -36,7 +36,15 @@ import {SiteDialogComponent} from './sites/site-dialog/site-dialog.component';
 import {PiDialogComponent} from './pis/pi-dialog/pi-dialog.component';
 import {CrcDialogComponent} from './crcs/crc-dialog/crc-dialog.component';
 import {RoleDialogComponent} from './roles/role-dialog/role-dialog.component';
-
+import {MatIconModule} from '@angular/material/icon';
+import {MatAccordion, MatExpansionModule } from '@angular/material/expansion';
+import { CrfFileComponent } from './crf-file/crf-file.component';
+import { AddFieldComponent } from './add-field/add-field.component';
+import { FieldsSidebarComponent } from './fields-sidebar/fields-sidebar.component';
+import {MatTable} from '@angular/material/table';
+import { CrfFieldConfigModalComponent } from './crf-template/crf-field-config-modal/crf-field-config-modal.component';
+import {MatSlideToggle} from '@angular/material/slide-toggle';
+import { AddBaseFieldModalComponent } from './crf-template/add-base-field-modal/add-base-field-modal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -60,7 +68,12 @@ import {RoleDialogComponent} from './roles/role-dialog/role-dialog.component';
     SiteDialogComponent,
     PiDialogComponent,
     CrcDialogComponent,
-    RoleDialogComponent
+    RoleDialogComponent,
+    CrfFileComponent,
+    AddFieldComponent,
+    FieldsSidebarComponent,
+    CrfFieldConfigModalComponent,
+    AddBaseFieldModalComponent
   ],
   imports: [
     BrowserModule,
@@ -76,8 +89,13 @@ import {RoleDialogComponent} from './roles/role-dialog/role-dialog.component';
     MatDialogModule,
     MatInputModule,
     MatButtonModule,
+    MatIconModule,
+    MatAccordion,
+    MatExpansionModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatTable,
+    MatSlideToggle,
   ],
   providers: [
     {

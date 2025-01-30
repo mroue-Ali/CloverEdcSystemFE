@@ -1,0 +1,64 @@
+.f-sidebar {
+  flex: 1;
+  background: #f4f4f4;
+  padding: 20px;
+  border-left: 1px solid #ccc;
+}
+.f-sidebar.next-question-mode {
+  background: #e0f7fa; /* Light teal background */
+}
+.f-sidebar.pulsing {
+  animation: pulse 1s infinite; /* Pulsing effect */
+}
+
+/* Highlighted BaseFields */
+.f-sidebar li.highlight {
+  background: #80deea; /* Highlight color */
+  font-weight: bold;
+}
+
+.f-sidebar li:hover {
+  background: #b2ebf2; /* Slightly lighter hover effect */
+}
+
+/* Pulsing animation */
+@keyframes pulse {
+  0% {
+    background-color: #e0f7fa;
+  }
+  50% {
+    background-color: #80deea;
+  }
+  100% {
+    background-color: #e0f7fa;
+  }
+}
+.f-sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.f-sidebar li {
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.f-sidebar li:hover {
+  background-color: #f1f1f1;
+}
+
+.add-base-field-btn {
+  margin-top: 20px;
+  padding: 10px 15px;
+  background-color: #3f51b5;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-base-field-btn:hover {
+  background-color: #2c3e8d;
+}

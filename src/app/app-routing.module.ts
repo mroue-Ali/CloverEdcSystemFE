@@ -13,6 +13,7 @@ import {SitesComponent} from './sites/sites.component';
 import {PisComponent} from './pis/pis.component';
 import {CrcsComponent} from './crcs/crcs.component';
 import {DmsComponent} from './dms/dms.component';
+import {AddFieldComponent} from './add-field/add-field.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path:'dms',component:DmsComponent,canActivate:[AuthGuard]},
   // { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] }, // Add this
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default Route
+  { path: 'crf-file/:fileId/add-field', component: AddFieldComponent },
 ];
 
 @NgModule({

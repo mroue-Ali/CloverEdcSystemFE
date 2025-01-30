@@ -1,1 +1,43 @@
-<p>crf-template works!</p>
+<div class="crf-builder-container">
+  <h1>CRF Builder</h1>
+  <mat-accordion multi>
+    <app-crf-file
+      *ngFor="let file of files"
+      [file]="file"
+      [addSubFile]="addSubFile.bind(this)"
+      (fileDeleted)="loadDefaultFiles()">
+    </app-crf-file>
+  </mat-accordion>
+
+  <!-- Add File Button -->
+  <button mat-fab color="primary" class="add-file-btn" (click)="addFile()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+
+<!--<div class="crf-builder-container">-->
+<!--  <h1>CRF Builder</h1>-->
+<!--  <mat-accordion multi>-->
+<!--    <mat-expansion-panel *ngFor="let file of files">-->
+<!--      <mat-expansion-panel-header>-->
+<!--        <mat-panel-title>{{ file.name }}</mat-panel-title>-->
+<!--      </mat-expansion-panel-header>-->
+
+<!--      <div *ngFor="let subFile of file.subFiles" class="subfile-item">-->
+<!--        <mat-icon>subdirectory_arrow_right</mat-icon>-->
+<!--        {{ subFile.name }}-->
+<!--      </div>-->
+
+<!--      &lt;!&ndash; Actions for Subfiles &ndash;&gt;-->
+<!--      <div class="actions">-->
+<!--        <button mat-button color="primary" (click)="addSubFile(file.id)">Add Subfile</button>-->
+<!--        <button mat-button color="accent" (click)="addField(file.id)">Add Field</button>-->
+<!--      </div>-->
+<!--    </mat-expansion-panel>-->
+<!--  </mat-accordion>-->
+
+<!--  &lt;!&ndash; Add File Button &ndash;&gt;-->
+<!--  <button mat-fab color="primary" class="add-file-btn" (click)="addFile()">-->
+<!--    <mat-icon>add</mat-icon>-->
+<!--  </button>-->
+<!--</div>-->

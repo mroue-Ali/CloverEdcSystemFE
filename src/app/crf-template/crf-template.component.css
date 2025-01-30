@@ -1,0 +1,25 @@
+.crf-builder-container {
+  margin: 20px;
+}
+
+.mat-accordion {
+  margin-top: 20px;
+}
+
+.subfile-item {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.add-file-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}

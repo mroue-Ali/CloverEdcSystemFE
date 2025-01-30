@@ -1,0 +1,45 @@
+<mat-expansion-panel>
+  <mat-expansion-panel-header>
+    <mat-panel-title>{{ file.name }}</mat-panel-title>
+    <button mat-icon-button color="warn" (click)="deleteFile(file.id)">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </mat-expansion-panel-header>
+
+  <!-- Subfiles -->
+  <div *ngFor="let subFile of file.subFiles">
+    <app-crf-file
+      [file]="subFile"
+      [addSubFile]="addSubFile"
+      (fileDeleted)="fileDeleted.emit()">
+    </app-crf-file>
+  </div>
+
+  <!-- Actions -->
+  <div class="actions">
+    <button mat-button color="primary" (click)="addSubFile(file.id)">Add Subfile</button>
+    <button mat-button color="accent" (click)="addField(file.id)">Add Field</button>
+  </div>
+</mat-expansion-panel>
+
+
+<!--<mat-expansion-panel>-->
+<!--  <mat-expansion-panel-header>-->
+<!--    <mat-panel-title>{{ file.name }}</mat-panel-title>-->
+<!--  </mat-expansion-panel-header>-->
+
+<!--  &lt;!&ndash; Subfiles &ndash;&gt;-->
+<!--  <div *ngFor="let subFile of file.subFiles">-->
+<!--    <app-crf-file-->
+<!--      [file]="subFile"-->
+<!--      [addSubFile]="addSubFile"-->
+<!--      [addField]="addField">-->
+<!--    </app-crf-file>-->
+<!--  </div>-->
+
+<!--  &lt;!&ndash; Actions for Subfiles &ndash;&gt;-->
+<!--  <div class="actions">-->
+<!--    <button mat-button color="primary" (click)="addSubFile(file.id)">Add Subfile</button>-->
+<!--    <button mat-button color="accent" (click)="addField(file.id)">Add Field</button>-->
+<!--  </div>-->
+<!--</mat-expansion-panel>-->

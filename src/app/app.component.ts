@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 })
 export class AppComponent {
   showSidebar = true;
+  title: string = 'CloverEdcFrontend';
 
   constructor(private router: Router) {
     // Hide the sidebar for specific routes

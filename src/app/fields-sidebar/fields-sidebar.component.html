@@ -1,0 +1,23 @@
+<!--<div class="f-sidebar">-->
+<!--  <h3>Base Fields</h3>-->
+<!--  <ul>-->
+<!--    <li *ngFor="let field of baseFields" (click)="selectField(field)">-->
+<!--      {{ field.fieldName }} ({{ field.type?.name }})-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--  <button mat-button color="primary" (click)="addBaseField()">Add New BaseField</button>-->
+<!--</div>-->
+
+
+<div class="f-sidebar" [class.next-question-mode]="isNextQuestionMode" [class.pulsing]="isNextQuestionMode">
+  <h3>Base Fields</h3>
+  <ul>
+    <li
+      *ngFor="let baseField of baseFields"
+      (click)="onBaseFieldClick(baseField)"
+      [class.highlight]="isNextQuestionMode"
+    >
+      {{ baseField.fieldName }} ({{ baseField.type?.name }})
+    </li>
+  </ul>
+</div>
