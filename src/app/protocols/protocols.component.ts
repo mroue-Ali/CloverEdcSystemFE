@@ -34,8 +34,8 @@ export class ProtocolsComponent {
       icon: 'delete',
       name: 'Delete',
       class: 'col-red',
-      action: (row : any) => console.log('Delete item:', row), // Placeholder action
-      condition: (row : any) => row.role.name !== 'Admin'
+      action: (row : any) => this.onDelete(row), // Placeholder action
+      //condition: (row : any) => row.role.name !== 'Admin'
     }
   ];
   //constructor with roles service
@@ -110,6 +110,11 @@ export class ProtocolsComponent {
 
   onExport() {
     console.log('Export Data');
+  }
+
+  onDelete(row: any){
+    console.log('Delete Item:', row);
+    this.protocolsService.delete(row.id).subscribe(() => {})
   }
 
 }
