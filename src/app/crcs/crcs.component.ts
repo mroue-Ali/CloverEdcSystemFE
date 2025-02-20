@@ -35,8 +35,8 @@ export class CrcsComponent {
       icon: 'delete',
       name: 'Delete',
       class: 'col-red',
-      action: (row: any) => console.log('Delete item:', row), // Placeholder action
-      condition: (row: any) => row.role.name !== 'Admin'
+      action: (row: any) => this.onDelete(row), // Placeholder action
+      //condition: (row: any) => row.role.name !== 'Admin'
     }
   ];
 
@@ -114,6 +114,10 @@ export class CrcsComponent {
       this.size = event.pageSize;
     }
     this.LoadData();
+  }
+
+  onDelete(row: any ){
+    this.service.delete(row.id).subscribe(() => {})
   }
 
 }
