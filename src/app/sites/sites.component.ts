@@ -43,8 +43,8 @@ export class SitesComponent {
       icon: 'delete',
       name: 'Delete',
       class: 'col-red',
-      action: (row: any) => console.log('Delete item:', row), // Placeholder action
-      condition: (row: any) => row.role.name !== 'Admin'
+      action: (row: any) => this.onDelete(row), // Placeholder action
+      //condition: (row: any) => row.role.name !== 'Admin'
     }
   ];
 
@@ -145,6 +145,10 @@ export class SitesComponent {
       this.size = event.pageSize;
     }
     this.LoadData();
+  }
+
+  onDelete(row : any){
+    this.sitesService.delete(row.id).subscribe(() => {})
   }
 
 }
