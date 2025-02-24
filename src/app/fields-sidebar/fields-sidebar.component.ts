@@ -48,12 +48,45 @@ export class FieldsSidebarComponent {
     });
   }
   onBaseFieldClick(baseField: BaseField): void {
-    this.baseFieldClicked.emit(baseField); // Emit the clicked BaseField
+    if (this.isNextQuestionMode){
+
+      this.baseFieldClicked.emit(baseField); // Emit the clicked BaseField
+    }else{
+      const dialogRef = this.dialog.open(CrfFieldConfigModalComponent, {
+        width: '400px',
+        data: {
+          baseFieldId: baseField.id,
+          isRequired: false,
+          relatedField: '',
+          relatedValue: '',
+          availableFields: this.crfFields,
+          fieldTypes: [
+            {id: '39799CAC-1B8D-4B6A-912F-53B5F9063B86', name: 'Text'},
+            {id: '1233', name: 'Number'},
+            {id: '12345', name: 'Date'},
+            {id: '123456', name: 'Boolean'},
+            {id: '061B60B2-5215-42EC-9EB7-90CC1614E25E', name: 'DropDown'}
+          ]
+        }
+      });
+  
+      dialogRef.afterClosed().subscribe(result => {
+        if (result) {
+          this.configureCrfField.emit(result); // Emit the configured CrfField options
+        }
+      });
+    }
   }
   addBaseField(): void {
     const dialogRef = this.dialog.open(AddBaseFieldModalComponent, {
       width: '400px',
-      data: { name: '', type: '', choices: [], templateId: this.templateId }
+      data: { name: '', type: '', choices: [], templateId: this.templateId,fieldTypes: [
+        {id: '39799CAC-1B8D-4B6A-912F-53B5F9063B86', name: 'Text'},
+        {id: '1233', name: 'Number'},
+        {id: '12345', name: 'Date'},
+        {id: '123456', name: 'Boolean'},
+        {id: '061B60B2-5215-42EC-9EB7-90CC1614E25E', name: 'DropDown'}
+      ] }
     });
 
     dialogRef.afterClosed().subscribe(result => {

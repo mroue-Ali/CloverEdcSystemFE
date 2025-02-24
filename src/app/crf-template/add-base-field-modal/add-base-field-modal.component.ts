@@ -15,7 +15,10 @@ export class AddBaseFieldModalComponent {
   }
 
   onTypeChange(): void {
-    if (this.data.type.name === 'DroDown') {
+console.log("data.type : ",this.data.type)
+    if (this.data.type.name === 'DropDown') {
+console.log("data.type : ",this.data.type)
+
       // if (this.data.type !== this.dropdownTypeId) {
       this.data.choices = []; // Clear choices if type is not dropdown
     }

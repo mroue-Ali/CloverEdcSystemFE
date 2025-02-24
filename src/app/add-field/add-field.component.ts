@@ -103,8 +103,7 @@ export class AddFieldComponent implements OnInit {
   addBaseField(newField: any): void {
     const payload = {
       name: newField.name,
-      type: newField.type,
-      typeId: newField.type,
+      typeId: newField.type.id,
       options: newField.choices,
       crfTemplateId: this.templateId
     };

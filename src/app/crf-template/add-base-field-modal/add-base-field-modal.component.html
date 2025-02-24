@@ -11,7 +11,7 @@
   <div class="form-group">
     <label for="fieldType">Field Type</label>
     <mat-select id="fieldType" [(ngModel)]="data.type" placeholder="Select a type" (selectionChange)="onTypeChange()">
-      <mat-option *ngFor="let type of data.fieldTypes" [value]="type.id">
+      <mat-option *ngFor="let type of data.fieldTypes" [value]="type">
         {{ type.name }}
       </mat-option>
     </mat-select>

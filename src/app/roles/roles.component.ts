@@ -30,8 +30,8 @@ export class RolesComponent {
       icon: 'delete',
       name: 'Delete',
       class: 'col-red',
-      action: (row: any) => console.log('Delete item:', row), // Placeholder action
-      condition: (row: any) => row.role.name !== 'Admin'
+      action: (row: any) => this.onDelete(row), // Placeholder action
+      // condition: (row: any) => row.role.name !== 'Admin'
     }
   ];
 
@@ -113,8 +113,10 @@ export class RolesComponent {
 
   //delete role
   onDelete(row: any) {
-    console.log('Delete Data');
-
+    console.log('Delete Data',row);
+this.service.delete(row.id).subscribe(() => {
+  // this.LoadData();
+})
   }
 
 }
