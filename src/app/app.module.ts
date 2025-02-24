@@ -45,6 +45,8 @@ import {MatTable} from '@angular/material/table';
 import { CrfFieldConfigModalComponent } from './crf-template/crf-field-config-modal/crf-field-config-modal.component';
 import {MatSlideToggle} from '@angular/material/slide-toggle';
 import { AddBaseFieldModalComponent } from './crf-template/add-base-field-modal/add-base-field-modal.component';
+import { CrfComponent } from './crf/crf.component';
+import { PatientComponent } from './patient/patient.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -73,7 +75,9 @@ import { AddBaseFieldModalComponent } from './crf-template/add-base-field-modal/
     AddFieldComponent,
     FieldsSidebarComponent,
     CrfFieldConfigModalComponent,
-    AddBaseFieldModalComponent
+    AddBaseFieldModalComponent,
+    CrfComponent,
+    PatientComponent
   ],
   imports: [
     BrowserModule,

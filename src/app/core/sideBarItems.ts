@@ -11,6 +11,8 @@ export const sideBarItems = [
   { title: 'PIs', route: '/pis', icon: 'account_circle', roles: ['Admin'] },
   { title: 'CRCs', route: '/crcs', icon: 'person', roles: ['Admin'] },
   { title: 'DMs', route: '/dms', icon: 'assessment', roles: ['Admin'] },
+  { title: 'CRFs', route: '/crf', icon: 'note', roles: ['CRC'] },
+  { title: 'Patients', route: '/patient', icon: 'note', roles: ['Admin', 'CRC'] },
 
 
 ];

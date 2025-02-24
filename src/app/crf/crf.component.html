@@ -1,0 +1,45 @@
+<div class="content">
+  <app-custom-table
+    [config]="config"
+    [items]="roles"
+    (addItem)="onAdd()"
+    (search)="onSearch($event)"
+    (refresh)="onRefresh($event)"
+    (exportData)="onExport()"
+  >
+  </app-custom-table>
+</div>
+
+<!--&lt;!&ndash; table with actions and scss style&ndash;&gt;-->
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col-md-12">-->
+<!--      <div class="card">-->
+<!--        <div class="card-header">-->
+<!--          <h4>Roles</h4>-->
+<!--        </div>-->
+<!--        <div class="card-body">-->
+<!--          <div class="table-responsive">-->
+<!--            <table class="table table-bordered">-->
+<!--              <thead>-->
+<!--                <tr>-->
+<!--                  <th>RoleModel</th>-->
+<!--                  <th>Actions</th>-->
+<!--                </tr>-->
+<!--              </thead>-->
+<!--              <tbody>-->
+<!--                <tr *ngFor="let role of roles">-->
+<!--                  <td>{{ role.name }}</td>-->
+<!--                  <td>-->
+<!--                    <button class="btn btn-primary" (click)="editRole(role)">Edit</button>-->
+<!--                    <button class="btn btn-danger" (click)="deleteRole(role)">Delete</button>-->
+<!--                  </td>-->
+<!--                </tr>-->
+<!--              </tbody>-->
+<!--            </table>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
